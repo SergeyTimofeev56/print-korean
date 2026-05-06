@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Редактирование</title></head>
+<body>
+    <h1>Редактировать товар #{{ product.id }}</h1>
+    <form method="POST">
+        <p>Название: <input type="text" name="name" value="{{ product.name }}"></p>
+        <p>Содержимое: <br><textarea name="sostav" rows="5" cols="50">{{ product.sostav }}</textarea></p>
+        <p>Штрихкод: <input type="text" name="barcode" value="{{ product.barcode }}"></p>
+        <p>Форматировать текст: <input type="checkbox" name="formatfield" {% if product.formatfield %}checked{% endif %}></p>
+        <p>Тип этикетки:<br>
+            <input type="radio" name="typelabel" value="1" id="type_small" {% if product.typelabel == 1 %}checked{% endif %}>
+            <label for="type_small">small</label><br>
+
+            <input type="radio" name="typelabel" value="2" id="type_big" {% if product.typelabel == 2 %}checked{% endif %}>
+            <label for="type_big">big</label>
+        </p>
+    <!--    <p>Цена: <input type="number" name="price" step="0.01" value="{{ product.price }}"></p>  -->
+        <button type="submit">Сохранить изменения</button>
+        <a href="/admin">Отмена</a>
+    </form>
+</body>
+</html>
